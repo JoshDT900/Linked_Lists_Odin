@@ -16,8 +16,19 @@ class LinkedList {
   prepend(value) {
     let newNode = new Node(value);
     newNode.next = this.head;
-    
-    this.head = newNode;    
+
+    this.head = newNode;
+  }
+
+  size() {
+    let size = 0;
+    let curr = this.head;
+    while (curr != null) {
+      size++;
+      curr = curr.next
+    }
+
+    return console.log(size);
   }
 }
 
@@ -37,5 +48,6 @@ let list = new LinkedList(newNode1);
 list.append(33);
 list.append(12341);
 list.prepend(45);
-list.prepend('cum')
-console.log(list.head.next);
+list.prepend("Some Value");
+list.append(88);
+list.size();
