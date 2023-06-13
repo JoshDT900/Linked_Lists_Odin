@@ -30,7 +30,7 @@ class LinkedList {
       curr = curr.next;
     }
 
-    return console.log(size);
+    return size;
   }
 
   headNode() {
@@ -119,7 +119,7 @@ class LinkedList {
       curr = curr.next;
     }
 
-    return console.log(output += "null");
+    return console.log((output += "null"));
   }
 
   insertAt(value, index) {
@@ -130,7 +130,7 @@ class LinkedList {
 
     if (index == 0) {
       newNode.next = this.head;
-      
+
       this.head = newNode;
 
       return this.head;
@@ -153,7 +153,32 @@ class LinkedList {
     }
 
     if (index > position) {
-      throw new Error(`Value of index exceedes list length of ${position}`)
+      throw new Error(`Value of index exceedes list length of ${position}`);
+    }
+
+    return this.head;
+  }
+
+  removeAt(index) {
+    let curr = this.head;
+    let prev = curr;
+    let position = 0;
+
+    if (index == position) {
+      this.head = curr.next;
+    }
+
+    while (curr != null) {
+      if (index == position) {
+        prev.next = curr.next;
+      }
+      position++;
+      prev = curr;
+      curr = curr.next;
+    }
+
+    if (index > position - 1) {
+      throw new Error(`Value of index too large`);
     }
 
     return this.head;
@@ -166,18 +191,3 @@ class Node {
     this.next = null;
   }
 }
-
-const newNode1 = new Node(2);
-const newNode2 = new Node(5);
-newNode1.next = newNode2;
-
-let list = new LinkedList(newNode1);
-
-list.append(33);
-list.append(12341);
-list.prepend(45);
-list.prepend("Some Value");
-list.append(88);
-console.log(list.insertAt(66, 0));
-list.toString();
-list.size()
