@@ -43,6 +43,19 @@ class LinkedList {
 
     return curr;
   }
+
+  atIndex(index) {
+    let curr = this.head;
+    for (let i = 0; i <= index; i++){
+      if (i == index) {
+        return curr
+      } else if (curr.next != null) {
+        curr = curr.next;
+      } else {
+        throw new Error("List does not contain given index.")
+      }
+    }
+  }
 }
 
 class Node {
@@ -64,4 +77,4 @@ list.prepend(45);
 list.prepend("Some Value");
 list.append(88);
 list.size();
-console.log(list.tailNode());
+console.log(list.atIndex(8));
