@@ -30,6 +30,19 @@ class LinkedList {
 
     return console.log(size);
   }
+
+  headNode() {
+    return this.head;
+  }
+
+  tailNode() {
+    let curr = this.head;
+    while (curr.next != null) {
+      curr = curr.next;
+    }
+
+    return curr;
+  }
 }
 
 class Node {
@@ -51,3 +64,4 @@ list.prepend(45);
 list.prepend("Some Value");
 list.append(88);
 list.size();
+console.log(list.tailNode());
