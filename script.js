@@ -25,7 +25,7 @@ class LinkedList {
     let curr = this.head;
     while (curr != null) {
       size++;
-      curr = curr.next
+      curr = curr.next;
     }
 
     return console.log(size);
@@ -46,13 +46,13 @@ class LinkedList {
 
   atIndex(index) {
     let curr = this.head;
-    for (let i = 0; i <= index; i++){
+    for (let i = 0; i <= index; i++) {
       if (i == index) {
-        return curr
+        return curr;
       } else if (curr.next != null) {
         curr = curr.next;
       } else {
-        throw new Error("List does not contain given index.")
+        throw new Error("List does not contain given index.");
       }
     }
   }
@@ -80,6 +80,25 @@ class LinkedList {
     }
     return false;
   }
+
+  find(value) {
+    let curr = this.head;
+    let index = 0;
+    while (curr.next != null) {
+      if (typeof value == "string" && typeof curr.value == "string") {
+        value = value.toLowerCase();
+        curr.value = curr.value.toLowerCase();
+      }
+
+      if (curr.value == value) {
+        return index;
+      } else {
+        index++;
+        curr = curr.next;
+      }
+    }
+    return null;
+  }
 }
 
 class Node {
@@ -102,5 +121,5 @@ list.prepend("Some Value");
 list.append(88);
 list.size();
 console.log(list.pop());
-list.size()
-console.log(list.contains("some Value"));
+list.size();
+console.log(list.find("SOME value"));
