@@ -56,6 +56,18 @@ class LinkedList {
       }
     }
   }
+
+  pop() {
+    let curr = this.head;
+    let prev = curr;
+    while (curr.next != null) {
+      prev = curr;
+      curr = curr.next;
+    }
+
+    prev.next = null;
+    return prev;
+  }
 }
 
 class Node {
@@ -77,4 +89,5 @@ list.prepend(45);
 list.prepend("Some Value");
 list.append(88);
 list.size();
-console.log(list.atIndex(8));
+console.log(list.pop());
+list.size()
