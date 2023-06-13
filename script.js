@@ -5,6 +5,7 @@ class LinkedList {
 
   append(value) {
     let curr = this.head;
+
     while (curr.next != null) {
       curr = curr.next;
     }
@@ -23,6 +24,7 @@ class LinkedList {
   size() {
     let size = 0;
     let curr = this.head;
+
     while (curr != null) {
       size++;
       curr = curr.next;
@@ -37,6 +39,7 @@ class LinkedList {
 
   tailNode() {
     let curr = this.head;
+
     while (curr.next != null) {
       curr = curr.next;
     }
@@ -46,6 +49,7 @@ class LinkedList {
 
   atIndex(index) {
     let curr = this.head;
+
     for (let i = 0; i <= index; i++) {
       if (i == index) {
         return curr;
@@ -60,17 +64,20 @@ class LinkedList {
   pop() {
     let curr = this.head;
     let prev = curr;
+
     while (curr.next != null) {
       prev = curr;
       curr = curr.next;
     }
 
     prev.next = null;
+
     return prev;
   }
 
   contains(value) {
     let curr = this.head;
+
     while (curr.next != null) {
       if (curr.value.toLowerCase() == value.toLowerCase()) {
         return true;
@@ -78,12 +85,14 @@ class LinkedList {
         curr = curr.next;
       }
     }
+
     return false;
   }
 
   find(value) {
     let curr = this.head;
     let index = 0;
+
     while (curr.next != null) {
       if (typeof value == "string" && typeof curr.value == "string") {
         value = value.toLowerCase();
@@ -97,17 +106,57 @@ class LinkedList {
         curr = curr.next;
       }
     }
+
     return null;
   }
 
   toString() {
     let curr = this.head;
-    let output = ""
+    let output = "";
+
     while (curr != null) {
-      output += `${curr.value} -> `
+      output += `${curr.value} -> `;
       curr = curr.next;
     }
-    return output += "null";
+
+    return console.log(output += "null");
+  }
+
+  insertAt(value, index) {
+    let curr = this.head;
+    let position = 0;
+    let prev = curr;
+    let newNode = new Node(value);
+
+    if (index == 0) {
+      newNode.next = this.head;
+      
+      this.head = newNode;
+
+      return this.head;
+    }
+
+    while (curr != null) {
+      if (index == position) {
+        newNode.next = curr;
+        curr = newNode;
+        prev.next = curr;
+      }
+      position++;
+      prev = curr;
+      curr = curr.next;
+    }
+
+    if (index == position) {
+      newNode.next = null;
+      prev.next = newNode;
+    }
+
+    if (index > position) {
+      throw new Error(`Value of index exceedes list length of ${position}`)
+    }
+
+    return this.head;
   }
 }
 
@@ -129,7 +178,6 @@ list.append(12341);
 list.prepend(45);
 list.prepend("Some Value");
 list.append(88);
-list.size();
-console.log(list.pop());
-list.size();
-console.log(list.toString());
+console.log(list.insertAt(66, 0));
+list.toString();
+list.size()
