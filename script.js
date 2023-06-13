@@ -68,6 +68,18 @@ class LinkedList {
     prev.next = null;
     return prev;
   }
+
+  contains(value) {
+    let curr = this.head;
+    while (curr.next != null) {
+      if (curr.value.toLowerCase() == value.toLowerCase()) {
+        return true;
+      } else {
+        curr = curr.next;
+      }
+    }
+    return false;
+  }
 }
 
 class Node {
@@ -91,3 +103,4 @@ list.append(88);
 list.size();
 console.log(list.pop());
 list.size()
+console.log(list.contains("some Value"));
