@@ -99,6 +99,16 @@ class LinkedList {
     }
     return null;
   }
+
+  toString() {
+    let curr = this.head;
+    let output = ""
+    while (curr != null) {
+      output += `${curr.value} -> `
+      curr = curr.next;
+    }
+    return output += "null";
+  }
 }
 
 class Node {
@@ -122,4 +132,4 @@ list.append(88);
 list.size();
 console.log(list.pop());
 list.size();
-console.log(list.find("SOME value"));
+console.log(list.toString());
